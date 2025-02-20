@@ -100,6 +100,24 @@ public class PracticeController
     }
 
     // TODO: create a DELETE route
+    // http://localhost:8080/resource/{resourceId}
+    // DELETE /resource/{resourceId}
+    @DeleteMapping("/resource/{resourceId}")
+    String deleteResource(
+            @PathVariable("resourceId") String resourceId
+    )
+    {
+        System.out.println("PracticeController.deleteResource - START");
+        System.out.println("Deleted username resourceId = " + resourceId);
+        System.out.println("PracticeController.deleteResource - END");
+
+        String valueReturnedToClient =
+                "Parameter received in the body of the DELETE request:\n" +
+                        "Deleted: yourBSUUsername at Resource ID = " + resourceId + "\n\n" +
+                        "<hr>" +
+                        "Find me in the PracticeController.deleteResource() method";
+        return valueReturnedToClient;
+    }
 
 
     // TODO: create a GET API that returns a random resource
