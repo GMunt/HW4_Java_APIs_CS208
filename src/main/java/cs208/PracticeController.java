@@ -79,7 +79,25 @@ public class PracticeController
 
 
     // TODO: create a PATCH route
+    // http://localhost:8080/user/{yourBSUUsername}/update_profile
+    // PATCH /user/{yourBSUUsername}/update_profile
+    @PatchMapping("/user/{yourBSUUsername}/update_profile")
+    String patchUpdateProfile(
+            @RequestParam("yourBSUUsername") String yourBSUUsername
+    )
+    {
+        System.out.println("PracticeController.patchUpdateProfile - START");
+        System.out.println("yourBSUUsername = " + yourBSUUsername);
+        System.out.println("PracticeController.patchUpdateProfile - END");
 
+        String valueReturnedToClient =
+                "Parameters received in the body of the PATCH request:\n" +
+                        "yourBSUUsername = " + yourBSUUsername + "\n\n" +
+                        "<hr>" +
+                        "Find me in the PracticeController.patchUpdateProfile() method";
+
+        return valueReturnedToClient;
+    }
 
     // TODO: create a DELETE route
 
