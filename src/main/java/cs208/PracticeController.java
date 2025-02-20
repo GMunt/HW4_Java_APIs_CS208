@@ -1,6 +1,7 @@
 package cs208;
 
 import org.springframework.web.bind.annotation.*;
+import java.util.Random;
 
 @RestController
 public class PracticeController
@@ -119,7 +120,45 @@ public class PracticeController
         return valueReturnedToClient;
     }
 
-
     // TODO: create a GET API that returns a random resource
+    Random rand = new Random();
+    // http://localhost:8080/api/random_robot_name
+    // GET /api/{random_robot_name}
+    @GetMapping("/api/random_robot_name")
+    String getRandomRobotName()
+    {
+        String[] robot_name_array =
+            {"C-3PO", "R2-D2", "H.E.R.B.I.E", "Baymax", "Rosie", "Optimus Prime", "Ultron"};
 
+        String random_robot_name = robot_name_array[rand.nextInt(robot_name_array.length)];
+        System.out.println("PracticeController.getRandomRobotName - START");
+        System.out.println("random_robot_name = " + random_robot_name);
+        System.out.println("PracticeController.getRandomRobotName - END");
+
+        String res =
+                "Randomly selected robot name is: " + random_robot_name;
+
+        return res;
+    }
+    // http://localhost:8080/api/random_movie_quote
+    // GET /api/{random_movie_quote}
+    @GetMapping("/api/random_movie_quote")
+    String getRandomMovieQuote()
+    {
+        String[] movie_quote_array = {
+                "May the Force be with you. - Star Wars",
+                "I see dead people. - The Sixth Sense",
+                "Why so serious. - The Dark Knight",
+                "There's no place like home - The Wizard of Oz"
+                                    };
+
+        System.out.println("PracticeController.getRandomMovieQuote - START");
+        System.out.println("movie_quote_array = " + movie_quote_array[rand.nextInt(movie_quote_array.length)]);
+        System.out.println("PracticeController.getRandomMovieQuote - END");
+
+        String res =
+                "Randomly selected movie quote is: " + movie_quote_array[rand.nextInt(movie_quote_array.length)];
+
+        return res;
+    }
 }
