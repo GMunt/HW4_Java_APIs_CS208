@@ -1,9 +1,6 @@
 package cs208;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PracticeController
@@ -56,6 +53,29 @@ public class PracticeController
 
 
     // TODO: create a POST route with two form parameters
+    // http://localhost:8080/create_user
+    // POST /create_user
+    @PostMapping("/create_user")
+    String postCreateUser(
+            @RequestParam("first_name") String first_name,
+            @RequestParam("last_name") String last_name
+    )
+    {
+        System.out.println("PracticeController.postCreateUser - START");
+        System.out.println("first_name = " + first_name);
+        System.out.println("last_name = " + last_name);
+        System.out.println("PracticeController.postCreateUser - END");
+
+        String valueReturnedToClient =
+                "Parameters received in the body of the POST request:\n" +
+                        "first_name = " + first_name + "\n" +
+                        "last_name = " + last_name + "\n\n" +
+                        "This REST API route would create a new issue with the first and last name specified in the parameters.\n\n" +
+                        "<hr>" +
+                        "Find me in the PracticeController.postCreateUser() method";
+
+        return valueReturnedToClient;
+    }
 
 
     // TODO: create a PATCH route
