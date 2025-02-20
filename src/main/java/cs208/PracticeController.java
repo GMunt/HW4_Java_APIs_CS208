@@ -1,6 +1,7 @@
 package cs208;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +11,7 @@ public class PracticeController
 
     // TODO: create a GET route with two query parameters
     // http://localhost:8080/display_name?first_name=<yourFirstName>&last_name=<yourLastName>
-    // Get /display_name?first_name=<yourFirstName>&last_name=<yourLastName>
+    // GET /display_name?first_name=<yourFirstName>&last_name=<yourLastName>
     @GetMapping("/display_name")
     String getSearchWithTwoParameters(
             @RequestParam("first_name") String parameter1,
@@ -33,6 +34,25 @@ public class PracticeController
         return valueReturnedToBrowser;
     }
     // TODO: create a GET route with a path parameter
+    // http://localhost:8080/user/{yourBSUUsername}/profile
+    // GET /user/{yourBSUUsername}/profile
+    @GetMapping("/user/{yourBSUUsername}/profile")
+    String getRouteWithPathParameters(
+            @PathVariable("yourBSUUsername") String yourBSUUsername
+    )
+    {
+        System.out.println("PracticeController.user/{bsuUsername}/profile - START");
+        System.out.println("yourBSUUsername = " + yourBSUUsername);
+        System.out.println("PracticeController.user/yourBSUUsername/profile - END");
+
+        String valueReturnedToBrowser =
+                "These are the values of parameters passed in the URL:<br>" +
+                        "yourBSUUsername = " + yourBSUUsername +"<br><br>" +
+                        "<hr>" +
+                        "Find me in the PracticeController.user/{yourBSUUsername}/profile";
+
+        return valueReturnedToBrowser;
+    }
 
 
     // TODO: create a POST route with two form parameters
